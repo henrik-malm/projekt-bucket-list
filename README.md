@@ -52,8 +52,10 @@ Skapa en enkel HTML-fil med följande struktur:
   </style>
 </head>
 <body>
-  <div id="app">
+  <header>
     <h1>Min Bucket List</h1>
+  </header>
+  <main>
     <form id="bucketForm">
       <input type="text" id="activityName" placeholder="Vad vill du göra?" required />
       <select id="activityCategory">
@@ -64,8 +66,8 @@ Skapa en enkel HTML-fil med följande struktur:
       </select>
       <button type="submit">Lägg till</button>
     </form>
-    <div id="bucketLists"></div>
-  </div>
+    <section id="bucketLists"></section>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>

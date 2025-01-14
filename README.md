@@ -74,10 +74,10 @@ Skapa en enkel HTML-fil med följande struktur:
 ### **2. JavaScript-logik**
 Skapa en script.js-fil för att lägga till funktionalitet. Följande steg guidar dig igenom de viktigaste delarna.
 
-a. Starta med en tom array som håller alla aktiviteter
-b. Skapa en funktion som ritar upp listan dynamiskt i DOM
-c. Lägg till en eventlyssnare på formuläret för att lägga till nya aktiviteter
-d. Skapa en funktion som rensar din lista när sidan laddas om
+* Starta med en tom array som håller alla aktiviteter
+* Skapa en funktion som ritar upp listan dynamiskt i DOM
+* Lägg till en eventlyssnare på formuläret för att lägga till nya aktiviteter
+* Skapa en funktion som rensar din lista när sidan laddas om
 
 
 ## **Level-ups**

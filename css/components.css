@@ -1,0 +1,33 @@
+header {
+  &::before {
+    content: 'header';
+  }
+  grid-row: header;
+}
+
+main {
+  &::before {
+    content: 'main';
+  }
+  grid-row: main;
+
+  .bucketForm {
+    padding: 1rem;
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    background-color: yellow;
+    select {
+      display: flex;
+      background-color: rgb(0, 255, 128);
+      justify-items: stretch;
+    }
+  }
+}
+
+footer {
+  &::before {
+    content: 'footer';
+  }
+  grid-row: footer;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bucket List</title>
+    <link rel="stylesheet" href="/css/style.css"></link>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #bucketLists div {
+        margin-bottom: 20px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+      }
+      button {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="content-grid">
+      <h1>Our Bucket List</h1>
+    </header>
+    <main class="content-grid">
+      <form id="bucketForm" class="bucketForm">
+        <input type="text" id="activityName" placeholder="Vad vill du göra?" required />
+        <select id="activityCategory">
+          <option value="Resor">Resor</option>
+          <option value="Äventyr">Äventyr</option>
+          <option value="Lärande">Lärande</option>
+          <option value="Hobby">Hobby</option>
+        </select>
+        <button type="submit">Lägg till</button>
+      </form>
+      <!-- Let's manipulate this ID or Class-->
+      <section id="bucketLists"></section>
+    </main>
+    <footer class="content-grid"><p>Copyright 2025, Hank and FunkSoulBrother</p></footer>
+    <script src="script.js"></script>
+  </body>
+</html>

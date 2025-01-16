@@ -4,6 +4,24 @@
 ------------------------------------------------------
 
 
+Dark mode :
+  "Turn the lights out"
+
+
+Estimate time of death / Countdown/Clock 
+  toogle :: 
+
+
+
+
+
+7 augusti - af 
+
+Snygg menu med "folders" 3d 
+
+
+
+
 
 
 

@@ -5,34 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bucket List</title>
     <link rel="stylesheet" href="/css/style.css"></link>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-      }
-      #bucketLists div {
-        margin-bottom: 20px;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-      }
-      li {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 5px 0;
-        padding: 0;
-      }
-      button {
-        margin-left: 10px;
-      }
-    </style>
   </head>
   <body>
     <header class="content-grid">
-      <h1>Our Bucket List</h1>
+        <h1>Our Bucket List</h1>
     </header>
+
     <main class="content-grid">
+      <div class="bucketWrapper">
       <form id="bucketForm" class="bucketForm">
         <input type="text" id="activityName" placeholder="Vad vill du göra?" required />
         <select id="activityCategory">
@@ -41,13 +21,14 @@
           <option value="Lärande">Lärande</option>
           <option value="Hobby">Hobby</option>
         </select>
-        <p> hi </p>
-        <h2> done </h2>
+
         <button type="submit">Lägg till</button>
       </form>
-      <!-- Let's manipulate this ID or Class-->
+      <!-- Let's manipulate this ID with JS-->
       <section id="bucketLists"></section>
+    </div>
     </main>
+
     <footer class="content-grid"><p>Copyright 2025, Hank and FunkSoulBrother</p></footer>
     <script src="script.js"></script>
   </body>

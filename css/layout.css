@@ -10,8 +10,9 @@ body > * {
 
 :root {
   --padding-inline: 2rem;
-  --content-max-width: 400px;
+  --content-max-width: 600px;
 }
+
 html {
   display: flex;
   flex-direction: column;
@@ -20,32 +21,30 @@ html {
   background-color: hotpink;
   height: 100%;
 }
+
 body {
   display: grid;
+
   grid-template-rows: [header-start] auto [header-end main-start] 1fr [main-end footer-start] auto [footer-end];
+
   width: 100vw;
 }
+
+
 .content-grid {
   display: grid;
+
   grid-template-columns:
     [full-width-start] minmax(var(--padding-inline), 1fr)
     [content-start] min(100% - (var(--padding-inline) * 2), var(--content-max-width))
     [content-end]
     minmax(var(--padding-inline), 1fr) [full-width-end];
 }
+
 .content-grid > :not(.breakout, .full-width),
 .full-width > :not(.breakout, .full-width) {
   grid-column: content;
 }
-/* Concept of .breakout not used in this assigment */
-/* .content-grid > .breakout {
-  grid-column: breakout;
-} */
-/* .content-grid > .full-width {
-  grid-column: full-width;
-  display: grid;
-  grid-template-columns: inherit;
-} */
 
 .content-grid > * {
   border: 4px rgb(0, 0, 0) solid;

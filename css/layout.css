@@ -5,12 +5,12 @@
 }
 
 body > * {
-  border: 1px rgb(0, 0, 0) solid;
+  /* border: 1px rgb(0, 0, 0) solid; */
 }
 
 :root {
   --padding-inline: 2rem;
-  --content-max-width: 600px;
+  --content-max-width: 500px;
 }
 
 html {
@@ -18,18 +18,15 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: hotpink;
   height: 100%;
 }
 
 body {
   display: grid;
-
   grid-template-rows: [header-start] auto [header-end main-start] 1fr [main-end footer-start] auto [footer-end];
-
+  gap: 10px;
   width: 100vw;
 }
-
 
 .content-grid {
   display: grid;
@@ -47,5 +44,5 @@ body {
 }
 
 .content-grid > * {
-  border: 4px rgb(0, 0, 0) solid;
+  /* border: 4px rgb(0, 0, 0) solid; */
 }

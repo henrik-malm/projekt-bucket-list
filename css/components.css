@@ -1,3 +1,7 @@
+html {
+  background-color: black;
+}
+
 header {
   &::before {
     content: 'header';
@@ -10,45 +14,98 @@ main {
     content: 'main';
   }
   grid-row: main;
+}
 
+.bucketWrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  background-color: rgb(34, 34, 34);
+  border-radius: 10px;
+  overflow: hidden;
+  > * {
+    grid-column: span 12;
+  }
   .bucketForm {
-    display: flex;
-    flex-direction: row;
-    background-color: yellow;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: subgrid;
+    gap: 4px;
+    background-color: rgba(0, 0, 0, 0.234);
+    padding: 20px;
+
+    > * {
+      grid-column: span 12;
+    }
 
     input {
+      grid-column: span 6;
     }
     select {
-      background-color: rgb(0, 255, 128);
-      button {
-        display: none;
+      grid-column: 6 span;
+    }
+    button {
+    }
+  }
+
+  #bucketLists {
+    display: grid;
+    box-shadow: 0px 4px 0px red, inset 0px 4px 0px green;
+
+    ul {
+      list-style: none;
+      border-top: 2px rgba(255, 255, 255, 0.076) solid;
+      border-bottom: 2px rgba(0, 0, 0, 0.509) solid;
+      &:last-child {
+        border-bottom: none;
+      }
+      h3 {
+        padding: 12px;
+      }
+      li {
+        padding: 10px 20px 10px 20px;
+        border-top: 2px rgba(255, 255, 255, 0.076) solid;
+        border-style: none;
+        border-bottom: 2px rgba(0, 0, 0, 0.413) solid;
+
+        display: flex;
+        justify-content: space-between;
+        button {
+        }
       }
     }
   }
 }
 
-.bucketWrapper {
-  display: grid;
-  background-color: rgb(4, 0, 255);
-  padding: 20px;
-  gap: 20px;
+/***** Buttons *****/
+button,
+input,
+select {
+  border-radius: 4px;
+  padding: 2px;
 }
-ul {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  background-color: rgb(0, 255, 38);
-  li {
-    display: flex;
-    justify-content: space-between;
-    background-color: red;
-  }
+button {
+  border: 0px solid rgb(126, 10, 10);
+  box-shadow: inset 1px 1px 1px rgb(0, 170, 255), inset -1px -1px 1px rgb(141, 15, 213);
+  background: linear-gradient(170deg, red, green);
 }
+/***** End Buttons *****/
 
 footer {
   &::before {
     content: 'footer';
   }
   grid-row: footer;
+}
+
+@media (min-width: 600px) {
+  .bucketWrapper {
+    .bucketForm {
+      input,
+      select {
+        grid-column: 5 span;
+      }
+      button {
+        grid-column: 2 span;
+      }
+    }
+  }
 }

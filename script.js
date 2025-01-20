@@ -31,6 +31,7 @@ function buildUl() {
   sortedCategories.forEach((category) => {
     const ul = document.createElement('ul');
     const categoryHeader = document.createElement('h3');
+    categoryHeader.classList.add('category-title');
     categoryHeader.textContent = category;
 
     ul.appendChild(categoryHeader);

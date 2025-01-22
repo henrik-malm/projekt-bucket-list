@@ -121,10 +121,11 @@ button,
         border-style: none;
         border-bottom: 1px var(--clr-shade) solid;
         justify-content: space-between;
-        button {
-        }
       }
     }
+  }
+  li:has(#taskDone:checked) {
+    background-color: green;
   }
 }
 

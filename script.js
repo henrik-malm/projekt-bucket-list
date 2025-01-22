@@ -19,8 +19,9 @@ function buildUl() {
   // Gruppera aktiviteter efter kategori
   const groupedActivities = activities.reduce((acc, activity) => {
     const category = activity.category;
+
     if (!acc[category]) acc[category] = [];
-    acc[category].push(activity.name);
+    acc[category].push(activity);
     return acc;
   }, {});
 
@@ -37,32 +38,93 @@ function buildUl() {
     ul.appendChild(categoryHeader);
 
     // Sortera aktiviteter inom kategorin
-    groupedActivities[category].sort().forEach((activity) => {
-      const li = document.createElement('li');
-      li.textContent = activity;
+    groupedActivities[category]
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .forEach((activity) => {
+        const liEl = document.createElement('li');
 
-      // Lägg till en ta bort-knapp för varje aktivitet
-      const removeButton = document.createElement('button');
-      removeButton.classList.add('action');
-      // Skapa <span> för ikon
-      const removeIcon = document.createElement('span');
-      removeIcon.classList.add('material-symbols-outlined');
-      removeIcon.textContent = '';
+        // Add a class if taskStatus is true
+        if (activity.taskStatus === true) {
+          liEl.classList.add('task-done');
+        }
 
-      // Append <span>
-      removeButton.appendChild(removeIcon);
+        liEl.innerHTML = `
+        <p>${activity.name}</p>
+        <input type="checkbox" class="task-done">
+        <button class="action">
+        <span class="material-symbols-outlined">Delete</span></button>
+        `;
 
-      // Kalla på funktionen för att ta bort aktivitet.
-      removeButton.addEventListener('click', () => {
-        removeActivity(activity, category);
+        // //Skapa en P tagg
+        // const p = document.createElement('p');
+        // p.textContent = activity.name;
+
+        // Lägg till en ta bort-knapp för varje aktivitet
+        // const removeButton = document.createElement('button');
+        // removeButton.classList.add('action');
+
+        // Skapa <span> för ikon
+        const removeIcon = document.createElement('span');
+        // removeIcon.classList.add('material-symbols-outlined');
+        // removeIcon.textContent = 'Delete';
+
+        // Lägg till <span>
+        // removeButton.appendChild(removeIcon);
+
+        // Skapa checkbox för task done
+        // const taskDoneEl = document.createElement('input');
+        // taskDoneEl.type = 'checkbox';
+        // taskDoneEl.checked = activity.taskStatus; // Set checkbox based on taskStatus
+        // taskDoneEl.id = 'taskDone';
+
+        // Kalla på funktionen för att ta bort aktivitet
+
+        // Add the event listener to the button after inserting the HTML
+        const removeButton = liEl.querySelector('.action'); // Target the button
+        removeButton.addEventListener('click', () => {
+          removeActivity(activity.name, activity.category);
+        });
+
+        // Kalla på funktionen för att ändra status done/undone
+        const taskDoneEl = liEl.querySelector('.task-done'); // Target the button
+
+        taskDoneEl.addEventListener('change', (ev) => {
+          changeTaskStatus(ev.target);
+          buildUl(); // Rebuild the list to update the class
+        });
+
+        // liEl.appendChild(p);
+        // liEl.appendChild(taskDoneEl);
+        // liEl.appendChild(removeButton);
+
+        ul.appendChild(liEl);
       });
-
-      li.appendChild(removeButton);
-      ul.appendChild(li);
-    });
 
     targetBucketList.appendChild(ul);
   });
+}
+
+function changeTaskStatus(target) {
+  // target.classList.toggle('hello');
+  // Är vårt target element "checked"?
+  if (target.checked) {
+    console.log('checked');
+    console.log(target);
+  } else {
+    console.log('not checcked');
+  }
+
+  // Get the parent element
+  const parentElement = target.parentElement; // Returns the parent element (if it's an element node)
+
+  const compareWithMe = parentElement.firstChild.textContent.trim();
+  // Find the object to update (e.g., update 'banana' to 'orange')
+  const objectIndex = activities.findIndex((obj) => obj.name === compareWithMe);
+  if (objectIndex !== -1) {
+    activities[objectIndex].taskStatus = !activities[objectIndex].taskStatus;
+  }
+
+  saveToLocalStorage();
 }
 
 // Funktion för att ta bort en aktivitet --> FILTER!!!
@@ -79,9 +141,12 @@ targetForm.addEventListener('submit', (event) => {
   // Hämta värden från formuläret
   const name = activityNameInput.value.trim();
   const category = activityCategorySelect.value;
+  const taskStatus = false; //initialt är alla tasks ogjorda
+
+  // console.log(taskStatus + 'he');
 
   // Lägg till aktivitet i listan och uppdatera gränssnittet
-  activities.push({ name, category });
+  activities.push({ name, category, taskStatus });
   buildUl();
 
   // Uppdatera localStorage
@@ -92,14 +157,11 @@ targetForm.addEventListener('submit', (event) => {
   activityCategorySelect.value = 'Resor';
 });
 
-// Bygg listan vid sidladdning
-buildUl();
-
 // Låt oss ändra tema {}
 const toggleThemeBtn = document.getElementById('toggle');
 const body = document.body;
 
-// Initialize theme
+// Initisiera tema från LS
 const currentTheme = localStorage.getItem('theme') || 'light';
 body.setAttribute('data-theme', currentTheme);
 
@@ -112,3 +174,6 @@ toggleThemeBtn.addEventListener('click', (event) => {
   body.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme); // Save preference to localStorage
 });
+
+// Bygg listan
+buildUl();

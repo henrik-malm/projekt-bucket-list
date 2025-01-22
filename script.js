@@ -43,7 +43,16 @@ function buildUl() {
 
       // Lägg till en ta bort-knapp för varje aktivitet
       const removeButton = document.createElement('button');
-      removeButton.textContent = 'Ta bort';
+      removeButton.classList.add('action');
+      // Skapa <span> för ikon
+      const removeIcon = document.createElement('span');
+      removeIcon.classList.add('material-symbols-outlined');
+      removeIcon.textContent = '';
+
+      // Append <span>
+      removeButton.appendChild(removeIcon);
+
+      // Kalla på funktionen för att ta bort aktivitet.
       removeButton.addEventListener('click', () => {
         removeActivity(activity, category);
       });
@@ -56,7 +65,7 @@ function buildUl() {
   });
 }
 
-// Funktion för att ta bort en aktivitet
+// Funktion för att ta bort en aktivitet --> FILTER!!!
 function removeActivity(activityName, category) {
   activities = activities.filter((activity) => !(activity.name === activityName && activity.category === category));
   saveToLocalStorage(); // Uppdatera localStorage
@@ -70,12 +79,6 @@ targetForm.addEventListener('submit', (event) => {
   // Hämta värden från formuläret
   const name = activityNameInput.value.trim();
   const category = activityCategorySelect.value;
-
-  // Validera att namn inte är tomt
-  if (name === '') {
-    alert('Aktivitetens namn får inte vara tomt.');
-    return;
-  }
 
   // Lägg till aktivitet i listan och uppdatera gränssnittet
   activities.push({ name, category });
@@ -91,3 +94,21 @@ targetForm.addEventListener('submit', (event) => {
 
 // Bygg listan vid sidladdning
 buildUl();
+
+// Låt oss ändra tema {}
+const toggleThemeBtn = document.getElementById('toggle');
+const body = document.body;
+
+// Initialize theme
+const currentTheme = localStorage.getItem('theme') || 'light';
+body.setAttribute('data-theme', currentTheme);
+
+// Toggle theme on button click
+toggleThemeBtn.addEventListener('click', (event) => {
+  event.preventDefault(); // Prevents the link from navigating
+  toggleThemeBtn.classList.toggle('on');
+  const currentTheme = body.getAttribute('data-theme');
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  body.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme); // Save preference to localStorage
+});

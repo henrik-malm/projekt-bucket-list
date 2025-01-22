@@ -1,40 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
-/* @link https://utopia.fyi/type/calculator?c=320,14,1.2,1240,16,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-
 body {
-  font-family: 'IBM Plex Sans', serif;
-  font-size: var(--step-0);
+    font-family: 'IBM Plex Sans', serif;
+    font-size: var(--step-0);
 }
 p,
 li {
-  font-size: var(--step-1);
+    font-size: var(--step-1);
 }
 h1,
 h2,
 h3 {
-  color: var(--clr-canvas-text);
-  /* margin-block-end: 1rem; */
+    color: var(--clr-canvas-text);
+    /* margin-block-end: 1rem; */
 }
 h1 {
-  font-size: var(--step-4);
+    font-size: var(--step-4);
 }
 .category-title {
-  font-size: var(--step--1);
-  font-weight: 600;
-  letter-spacing: 0.075em;
-  text-transform: uppercase;
+    font-size: var(--step--1);
+    font-weight: 600;
+    letter-spacing: 0.075em;
+    text-transform: uppercase;
 }
 
 footer {
-  p {
-    text-transform: uppercase;
-    font-size: var(--step--1);
-  }
+    p {
+        text-transform: uppercase;
+        font-size: var(--step--1);
+    }
 }
 
 input,
 select,
 button {
-  font-size: var(--step-0);
+    font-size: var(--step-0);
 }

@@ -19,7 +19,7 @@
   },
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",   // Keep trailing commas where valid in ES5
-  "prettier.tabWidth": 2,
+  "prettier.tabWidth": 8,
   "prettier.semi": true,
   "prettier.printWidth": 120,
   "liveSassCompile.settings.formats": [

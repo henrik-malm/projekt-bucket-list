@@ -1,0 +1,5 @@
+body,
+html {
+    background-color: var(--clr-body-bg);
+    color: var(--clr-canvas-text);
+}
